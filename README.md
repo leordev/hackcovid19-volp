@@ -1,5 +1,13 @@
 # HACKCOVID19 - Desafio 094
 
+https://volp-4d850.web.app/
+
+Passos para testar a aplicação:
+1. Acesse: https://volp-4d850.web.app/
+1. Procure pelo endereço Avenida Maracanã, Tijuca, Rio de Janeiro (nossas ONGs foram cadastradas nessa região apenas).
+1. Crie um pedido de ajuda
+1. Tente se registrar como ajudante e visualizar e atender pedidos de ajudas
+
 https://youtu.be/FPxED8I6tM8
 
 https://devpost.com/software/volp
