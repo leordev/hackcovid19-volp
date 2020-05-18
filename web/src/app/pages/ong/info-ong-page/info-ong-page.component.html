@@ -1,0 +1,9 @@
+<app-header></app-header>
+<mat-tab-group>
+  <mat-tab label="Minhas Informações">
+    <app-user-info [user]="user"></app-user-info>
+  </mat-tab>
+  <mat-tab label="Informações da ONG">
+    <app-ong-info [authUser]="userAuth"></app-ong-info>
+  </mat-tab>
+</mat-tab-group>

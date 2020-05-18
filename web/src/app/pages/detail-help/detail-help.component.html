@@ -1,0 +1,161 @@
+<app-header></app-header>
+<div class="container my-3">
+  <div class="d-flex justify-content-center p-3" *ngIf="!request">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ng-container *ngIf="request">
+    <h1 class="text-center">Pedido de Ajuda</h1>
+    <p><strong>Código do Pedido: </strong> {{ request.id }}</p>
+    <pre class="description">{{ request.description }}</pre>
+
+    <p *ngIf="request.offered_amount > 0">
+      <strong>Valor da Recompensa: </strong>
+      R$ <span>{{ toCurrency(request.offered_amount) }}</span>
+    </p>
+
+    <h2>Endereço</h2>
+    <p class="m-0">
+      {{ request.address.address1
+      }}{{ request.address.address2 ? ', ' + request.address.address2 : '' }}
+    </p>
+    <p class="m-0">
+      {{ request.address.city }}, {{ request.address.state }} -
+      {{ request.address.zip_code }}
+    </p>
+
+    <h2 class="mt-4" [ngClass]="status.style">{{ status.text }}</h2>
+
+    <ng-container *ngIf="!isCanceled">
+      <ng-container
+        *ngIf="loggedUser === request.requester_id && request.status !== 4"
+      >
+        <a
+          mat-button
+          color="warn"
+          (click)="cancelRequest()"
+          target="_blank"
+          class="d-table mx-auto"
+        >
+          CANCELAR PEDIDO
+        </a>
+      </ng-container>
+
+      <ng-container
+        *ngIf="loggedUser !== request.requester_id && request.helper_id === 0"
+      >
+        <a
+          mat-raised-button
+          color="accent"
+          (click)="acceptRequest()"
+          target="_blank"
+          class="d-table mx-auto"
+        >
+          ACEITAR ESSA SOLICITAÇÃO
+        </a>
+      </ng-container>
+
+      <ng-container
+        *ngIf="loggedUser === request.helper_id && request.status === 2"
+      >
+        <a
+          mat-raised-button
+          color="accent"
+          (click)="progressRequest()"
+          target="_blank"
+          class="d-table mx-auto"
+        >
+          INICIAR AJUDA
+        </a>
+      </ng-container>
+
+      <ng-container
+        *ngIf="loggedUser === request.helper_id && request.status === 3"
+      >
+        <a
+          mat-raised-button
+          color="primary"
+          (click)="completeRequest()"
+          target="_blank"
+          class="d-table mx-auto"
+        >
+          COMPLETAR AJUDA
+        </a>
+      </ng-container>
+
+      <ng-container
+        *ngIf="loggedUser === request.helper_id && request.status !== 4"
+      >
+        <a
+          mat-button
+          color="warn"
+          (click)="undoHelpRequest()"
+          target="_blank"
+          class="d-table mx-auto"
+        >
+          CANCELAR AJUDA
+        </a>
+      </ng-container>
+
+      <ng-container
+        *ngIf="
+          loggedUser !== request.requester_id &&
+          loggedUser === request.helper_id
+        "
+      >
+        <h2 class="mt-4">Informações do Solicitante</h2>
+        <p>{{ request.requester.name }}</p>
+
+        <h2>Telefones</h2>
+        <div *ngFor="let item of request.requester_phones">
+          <p class="text-center">{{ item.phone | phone }}</p>
+          <a
+            mat-button
+            color="primary"
+            [href]="'tel:' + item.phone"
+            target="_blank"
+            class="d-table mx-auto"
+          >
+            FAZER LIGAÇÃO
+          </a>
+          <a
+            mat-button
+            [href]="'https://wa.me/' + item.phone"
+            target="_blank"
+            class="d-table mx-auto btn-green"
+          >
+            WHATSAPP
+          </a>
+        </div>
+      </ng-container>
+
+      <ng-container
+        *ngIf="request.helper_id > 0 && loggedUser !== request.helper_id"
+      >
+        <h2 class="mt-4">Informações do Ajudante</h2>
+        <p>{{ request.helper.name }}</p>
+
+        <h2>Telefones</h2>
+        <div *ngFor="let item of request.helper_phones">
+          <p class="text-center">{{ item.phone | phone }}</p>
+          <a
+            mat-button
+            color="primary"
+            [href]="'tel:' + item.phone"
+            target="_blank"
+            class="d-table mx-auto"
+          >
+            FAZER LIGAÇÃO
+          </a>
+          <a
+            mat-button
+            [href]="'https://wa.me/' + item.phone"
+            target="_blank"
+            class="d-table mx-auto btn-green"
+          >
+            WHATSAPP
+          </a>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

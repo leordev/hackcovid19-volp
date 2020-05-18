@@ -1,0 +1,12 @@
+import * as Knex from "knex";
+
+const TABLE_NAME = "${tableName}";
+
+export async function seed(knex: Knex): Promise<void> {
+    await knex(TABLE_NAME).del();
+    return knex(TABLE_NAME).insert([
+        { id: 1, colName: "rowValue1" },
+        { id: 2, colName: "rowValue2" },
+        { id: 3, colName: "rowValue3" },
+    ]);
+}

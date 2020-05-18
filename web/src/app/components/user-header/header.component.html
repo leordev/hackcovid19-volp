@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a style="text-decoration: none; color: white;" routerLink="/">VOLP</a>
+    <span class="mobile-hidden" *ngIf="userLogged">
+      &nbsp;- Olá, {{ userLogged.user.name }}
+    </span>
+    <span class="toolbar-spacer"></span>
+    <a mat-button routerLink="/auth" *ngIf="!userLogged">ENTRAR</a>
+    <button mat-button (click)="logout()" *ngIf="userLogged">SAIR</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="userLogged">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [hidden]="!userLogged">
+      <button mat-menu-item routerLink="/ongs">
+        <mat-icon>business</mat-icon>
+        <span>ORGANIZAÇÕES</span>
+      </button>
+      <button mat-menu-item routerLink="/my-helps">
+        <mat-icon>hearing</mat-icon>
+        <span>MINHAS AJUDAS</span>
+      </button>
+      <button mat-menu-item routerLink="/my-asks">
+        <mat-icon>help</mat-icon>
+        <span>MEUS PEDIDOS</span>
+      </button>
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>account_circle</mat-icon>
+        <span>PERFIL</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

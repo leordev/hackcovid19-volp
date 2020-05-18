@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="Endereço: Rua e Número"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="newAddress.address1"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="Complemento, Bairro"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="newAddress.address2"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="Cidade"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="newAddress.city"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="Estado"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="newAddress.state"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="CEP"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="newAddress.zip_code"
+      />
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

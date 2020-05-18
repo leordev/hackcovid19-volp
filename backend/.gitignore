@@ -1,0 +1,7 @@
+.env
+.data
+node_modules
+logs
+build
+*.log
+firebase_credentials.json

@@ -1,0 +1,41 @@
+<mat-card *ngFor="let address of addresses">
+  
+  <div class="container">
+    <p style="font-weight: 600;">Endereço da ONG</p>
+    <hr />
+    <div class="row">
+      <div class="col-lg-12">
+        <mat-card class="mat-card-info">
+          <div class="card-text">
+            <h2>Estado da ONG</h2>
+            <p>{{ address.city }}</p>
+          </div>
+          <div class="card-text">
+            <h2>Cidade da ONG</h2>
+            <p>
+              {{ address.state }}
+            </p>
+          </div>
+          <div class="card-text">
+            <h2>Bairro</h2>
+            <p>{{address.address2}}</p>
+          </div>
+          <div class="card-text">
+            <h2>Logradouro da ONG</h2>
+            <p>Rua Conde de Bonfim 1024 / 33</p>
+          </div>
+          <div class="card-text">
+            <h2>CEP</h2>
+            <p>{{ 20520070 }}</p>
+          </div>
+        </mat-card>
+        <button mat-raised-button class="pull-right mt-3 ml-3" color="primary">
+          Cadastrar
+        </button>
+        <button mat-stroked-button class="pull-right mt-3 ml-3" color="primary">
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

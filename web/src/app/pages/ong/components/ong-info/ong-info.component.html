@@ -1,0 +1,15 @@
+<div class="row" *ngIf="authUser.ownsInstitutionId">
+  <div class="col-lg-6" *ngIf="institution">
+    <app-ong-perfil [institution]="institution"></app-ong-perfil>
+  </div>
+  <div class="col-lg-6">
+    <app-ong-endereco [addresses]="institution.addresses"></app-ong-endereco>
+  </div>
+</div>
+<!-- Se não existir ong -->
+<div class="p-3" *ngIf="!authUser.ownsInstitutionId">
+  <p style="font-weight: 600; color: red;">
+    Você não possui uma ONGs ou instituição de caridade
+  </p>
+  <a mat-button color="primary" routerLink="/register-ong">CRIAR ONG</a>
+</div>

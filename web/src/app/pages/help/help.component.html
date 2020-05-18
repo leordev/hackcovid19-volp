@@ -1,0 +1,73 @@
+<app-header></app-header>
+<form (ngSubmit)="submit()">
+  <mat-card>
+    <mat-card-title>
+      Solicitar Ajuda
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field class="w-100">
+        <mat-label>O que você está precisando?</mat-label>
+        <textarea
+          matInput
+          required
+          rows="9"
+          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="newHelpRequest.description"
+          placeholder="Ex. Estou na área de risco e preciso que alguém faça minhas compras.
+Segue minha lista:
+- 4 caixas de leite Parmalat integral,
+- 3 duzias de ovos,
+- 2 kg de alcatra."
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Valor Oferecido para o Ajudante (opcional)</mat-label>
+        <input
+          matInput
+          placeholder="50,00"
+          type="number"
+          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="newHelpRequest.offered_amount"
+        />
+      </mat-form-field>
+      <p>
+        O valor oferecido deve incluir o valor da compra e é opcional. Se você
+        puder pagar pela sua ajuda, pague. Senão, não tem problemas, esperamos
+        que um dos ajudantes ou ONGs possam te ajudar.
+      </p>
+      <mat-divider></mat-divider>
+      <h2 class="mt-4">Endereço</h2>
+      <label id="address-group-label" class="mb-4">
+        Selecione seu endereço ou cadastre um novo:
+      </label>
+      <mat-radio-group
+        aria-labelledby="address-group-label"
+        class="radio-group"
+        [(ngModel)]="newHelpRequest.address_id"
+        [ngModelOptions]="{ standalone: true }"
+        (ngModelChange)="handleAddressSelection($event)"
+      >
+        <mat-radio-button
+          class="radio-item"
+          *ngFor="let address of myAddresses"
+          [value]="address.id"
+        >
+          {{ address.address1 }} - {{ address.address2 }}
+          <br />
+          {{ address.city }}
+        </mat-radio-button>
+        <mat-radio-button value="-1" class="radio-item">
+          Cadastrar Novo Endereço
+        </mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="newAddress">
+        <app-address-form [address]="newAddress"></app-address-form>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-content> </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>SOLICITAR AJUDA</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

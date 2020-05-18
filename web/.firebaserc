@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "volp-4d850": {
+      "hosting": {
+        "corona-virus": [
+          "volp-4d850"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "staging": "volp-4d850"
+  }
+}

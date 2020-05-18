@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "corona-maps",
+    "slug": "corona-maps",
+    "version": "1.0.0",
+    "extra": {
+      "settings": {
+        "backendAddress": "http://localhost:3333"
+      }
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash2.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FF8A00"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.codigopratodos.CoronaMaps",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyD4GIyOGyY2xnPMvm1A2mJ_Vi7NHZ7jlLo"
+        }
+      }
+    }
+  }
+}

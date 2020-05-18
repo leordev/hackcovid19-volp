@@ -1,0 +1,93 @@
+<div class="full-screen d-flex align-items-center justify-content-center">
+  <mat-card class="login-card p-5 mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>
+        <a mat-icon-button routerLink="/" *ngIf="!codeSent">
+          <mat-icon>arrow_back</mat-icon>
+        </a>
+        <button mat-icon-button (click)="tryOtherNumber()" *ngIf="codeSent">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        Bem vindo ao Volp
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="w-100" *ngIf="!codeSent">
+        <input
+          matInput
+          placeholder="Telefone"
+          [(ngModel)]="phoneNumber"
+          (ngModelChange)="onPhoneChange($event)"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100" *ngIf="codeSent">
+        <input matInput placeholder="Código SMS" [(ngModel)]="code" required />
+      </mat-form-field>
+      <ng-container *ngIf="codeSent && isSingUp">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Nome" [(ngModel)]="user.name" required />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Email"
+            [(ngModel)]="user.email"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="CPF (só números)"
+            [(ngModel)]="user.unique_document"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Data de Nascimento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="user.birthdate"
+            [max]="maxDate"
+            (click)="picker.open()"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+        <mat-slide-toggle class="w-100" [(ngModel)]="user.is_helper"
+          >Quero ser ajudante</mat-slide-toggle
+        >
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="mx-auto d-table">
+        <button
+          *ngIf="!codeSent"
+          type="button"
+          mat-raised-button
+          color="accent"
+          (click)="onSubmit(true)"
+          [disabled]="!isNumberValid() || loading"
+        >
+          CADASTRAR
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="codeSent ? finishAuth() : onSubmit(false)"
+          [disabled]="(codeSent ? isInvalid() : !isNumberValid()) || loading"
+        >
+          {{
+            codeSent ? (isSingUp ? 'REGISTRAR' : 'ENTRAR') : 'JÁ TENHO CONTA'
+          }}
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,130 @@
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #848484;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #f4f5fa;
+  margin: 0px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.full-screen {
+  height: 100vh;
+  width: 100vw;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.panel {
+  display: block;
+  height: 278px;
+}
+
+.freeBird {
+  margin-top: -100px;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+.mat-cell {
+  font-size: 14px;
+  min-height: 48px;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding: 0 !important;
+}
+
+.mat-card-info {
+  background-color: #fafafa;
+  h2 {
+    margin: 0 !important;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .card-text {
+    padding: 5px;
+
+    h2 {
+      margin: 0 !important;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+}
+
+.profile_img {
+  border-radius: 50px;
+}
+
+.institution-img {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+
+  .radio-item {
+    margin: 5px;
+    width: 100%;
+
+    .mat-radio-label {
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.btn-green {
+  color: green !important;
+
+  &.mat-button .mat-button-focus-overlay,
+  .mat-icon-button .mat-button-focus-overlay,
+  .mat-stroked-button .mat-button-focus-overlay {
+    background-color: green !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+pre.description {
+  font-family: inherit;
+  white-space: pre-wrap;
+}

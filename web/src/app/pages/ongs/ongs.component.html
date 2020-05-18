@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="container my-3">
+  <div class="d-flex justify-content-center">
+    <mat-form-field class="w-100">
+      <mat-label>{{
+        loadingAddress ? 'Carregando...' : 'Busque perto da sua casa'
+      }}</mat-label>
+      <input
+        matInput
+        placeholder="Avenida Maracanã, Rio de Janeiro"
+        [(ngModel)]="search"
+        (ngModelChange)="onSearch($event)"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="onPickAddress($event)"
+      >
+        <mat-option *ngFor="let option of addressOptions" [value]="option">
+          {{ option.display_name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="row justify-content-center align-items-center my-2">
+    <div class="col-12 col-md-6 col-lg-4 my-2" *ngFor="let item of data">
+      <mat-card class="mat-elevation-z8">
+        <mat-card-header>
+          <mat-card-title>{{ item.name }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ item.address1
+            }}{{ item.address2 ? ', ' + item.address2 : '' }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <img
+          mat-card-image
+          [src]="!!item.profile_picture ? item.profile_picture : 'assets/images/charity.png'"
+          [alt]="item.name"
+        />
+        <mat-card-content>
+          <p>
+            {{
+              item.description.length > 70
+                ? item.description.substr(0, 67) + '...'
+                : item.description
+            }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-button [routerLink]="'/detail-ong/' + item.id">DETALHES</a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="full-screen d-flex align-items-center justify-content-center">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card class="p-5 m-3 mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title>
+          <a mat-icon-button routerLink="/profile">
+            <mat-icon>arrow_back</mat-icon>
+          </a>
+          Cadastre sua ONG :)
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Nome da ONG"
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="CNPJ (só números)"
+            formControlName="unique_document"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Descrição</mat-label>
+          <textarea
+            matInput
+            rows="5"
+            placeholder="A nossa ONG busca..."
+            formControlName="description"
+            required
+          ></textarea>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Informações bancárias para doação</mat-label>
+          <textarea
+            matInput
+            rows="5"
+            placeholder="Nossas contas bancárias... + números"
+            formControlName="bank_info"
+          ></textarea>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Foto de Perfil (URL ex: https://...)"
+            formControlName="profile_picture"
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Website (URL ex: https://...)"
+            formControlName="website_url"
+          />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="form.invalid || loading"
+        >
+          CADASTRAR
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

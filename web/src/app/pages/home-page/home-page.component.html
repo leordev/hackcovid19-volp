@@ -1,0 +1,61 @@
+<app-header></app-header>
+<mat-progress-bar
+  class="loading-map-indicator"
+  mode="indeterminate"
+  *ngIf="loading"
+></mat-progress-bar>
+<div class="search mat-elevation-z8">
+  <mat-form-field class="w-100">
+    <mat-label>{{
+      loadingAddress ? 'Carregando...' : 'Busque perto da sua casa'
+    }}</mat-label>
+    <input
+      matInput
+      placeholder="Avenida Maracanã, Rio de Janeiro"
+      [(ngModel)]="search"
+      (ngModelChange)="onSearch($event)"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onPickAddress($event)"
+    >
+      <mat-option *ngFor="let option of addressOptions" [value]="option">
+        {{ option.display_name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+<button
+  class="actions"
+  mat-fab
+  color="primary"
+  [matMenuTriggerFor]="menu"
+  aria-label="Opções"
+>
+  <mat-icon>info</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <a mat-menu-item routerLink="/ask-help">
+    <mat-icon>sentiment_dissatisfied</mat-icon>
+    <span>Quero ajuda</span>
+  </a>
+  <a mat-menu-item routerLink="/auth">
+    <mat-icon>emoji_people</mat-icon>
+    <span>Quero ajudar!</span>
+  </a>
+  <a mat-menu-item routerLink="/auth">
+    <mat-icon>business</mat-icon>
+    <span>Tenho uma Organização</span>
+  </a>
+</mat-menu>
+<div
+  #map
+  class="map"
+  leaflet
+  [leafletOptions]="options"
+  [leafletLayers]="markers"
+  [leafletFitBounds]="fitBounds"
+  [leafletFitBoundsOptions]="fitBoundsOptions"
+  (leafletMapReady)="onMapReady($event)"
+></div>
