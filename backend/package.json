@@ -52,7 +52,7 @@
         "csv-parse": "^4.8.9",
         "dotenv-safe": "^8.2.0",
         "email-validator": "^2.0.4",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "express-jwt": "^5.3.3",
         "express-pino-logger": "^4.0.0",
         "firebase-admin": "^8.12.1",
