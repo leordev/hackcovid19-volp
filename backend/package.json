@@ -58,7 +58,7 @@
         "firebase-admin": "^8.12.1",
         "helmet": "^3.22.0",
         "jsonwebtoken": "^8.5.1",
-        "knex": "^0.21.0",
+        "knex": "^2.4.0",
         "pg": "^8.0.2",
         "pino": "^6.2.0",
         "swagger-jsdoc": "^4.0.0",
